@@ -6,8 +6,8 @@ interface WalletInfoInput {
 }
 
 type RawWalletInfoInput = {
-  protocol: 'CELO' | 'ETHEREUM' | 'POLYGON'
   tokenAddresses?: string[]
+  config: SdkConfig
 } & WalletInfoInput
 
 interface NativeAssetBalance {
@@ -31,14 +31,14 @@ interface WalletInfo {
 
 const getWalletInfo = async ({
   address,
-  protocol,
   tokenAddresses = [],
+  config
 }: RawWalletInfoInput): Promise<WalletInfo> => {
   const qs = [
-    `protocol=${protocol}`,
+    `protocol=${config.protocol}`,
     ...tokenAddresses.map(address => `tokenAddresses[]=${address}`),
   ]
-  const res = await getCryptumApi().get(
+  const res = await getCryptumApi(config).get(
     `/wallet/${address}/info?${qs.join('&')}`
   )
   return res.data
@@ -49,8 +49,8 @@ const buildGetWalletInfo =
   (address: string) =>
     getWalletInfo({
       address,
-      protocol: config.protocol,
       tokenAddresses: config.tokenAddresses,
+      config  
     })
 
 export default buildGetWalletInfo

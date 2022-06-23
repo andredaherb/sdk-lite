@@ -17,11 +17,11 @@ interface DeployErc20FeeInput {
 
 const getFee = async (
   txData: TransferFeeInput | DeployErc20FeeInput,
-  protocol: Protocol
+  config: SdkConfig
 ) => {
   try {
-    const response = await getCryptumApi().post(
-      `/fee?protocol=${protocol}`,
+    const response = await getCryptumApi(config).post(
+      `/fee?protocol=${config.protocol}`,
       txData
     )
     return response.data
@@ -32,6 +32,6 @@ const getFee = async (
 
 const buildGetFee =
   (config: SdkConfig) => (txData: TransferFeeInput | DeployErc20FeeInput) =>
-    getFee(txData, config.protocol)
+    getFee(txData, config)
 
 export default buildGetFee

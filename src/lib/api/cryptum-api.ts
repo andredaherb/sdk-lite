@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { getBaseUrl } from './config'
+import { ConnectionConfig, getBaseUrl } from './config'
 
-const getCryptumApi = () =>
+const getCryptumApi = (config: ConnectionConfig) =>
   axios.create({
     baseURL: getBaseUrl('testnet'),
     headers: {
-      'x-api-key': 'KfVzF8Vb3Rk5XZYuyPDwIvku4WmCayL7',
+      'x-api-key': config.apiKey,
     },
   })
 
