@@ -11,5 +11,5 @@ export const getBaseUrl = (environment: EnvironmentConfig) => {
   if (environment === 'testnet') return 'https://api-dev.cryptum.io'
   if (environment === 'mainnet') return 'https://api.cryptum.io'
 
-  throw new Error(`Unknown environment ${environment}`)
+  throw new Error(`Unknown environment ${environment}.`)
 }
