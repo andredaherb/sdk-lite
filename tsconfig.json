@@ -5,8 +5,8 @@
     "module": "CommonJS", // which system for the program AMD, UMD, System, CommonJS
 
     // Recommended: Compiler complains about expressions implicitly typed as 'any'
-    "noImplicitAny": true, 
+    "noImplicitAny": true
   },
-  "include": ["src"], // which files to compile
-  "exclude": ["node_modules"], // which files to skip
+  "include": ["index.ts", "lib"], // which files to compile
+  "exclude": ["node_modules"] // which files to skip
 }

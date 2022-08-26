@@ -1,1 +1,3 @@
-console.log('hi')
+import buildSdk from './lib/builder'
+
+export default buildSdk

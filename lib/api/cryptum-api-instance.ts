@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ConnectionConfig, getBaseUrl } from './config'
 
-const getCryptumApi = (config: ConnectionConfig) =>
+const getCryptumAxiosInstance = (config: ConnectionConfig) =>
   axios.create({
     baseURL: getBaseUrl('testnet'),
     headers: {
@@ -9,4 +9,4 @@ const getCryptumApi = (config: ConnectionConfig) =>
     },
   })
 
-export default getCryptumApi
+export default getCryptumAxiosInstance

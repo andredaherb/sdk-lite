@@ -1,13 +1,12 @@
-import getCryptumApi from '../api/cryptum-api'
 import { SdkConfig } from '../builder'
+import getCryptumAxiosInstance from './cryptum-api-instance'
 
 interface WalletInfoInput {
   address: string
 }
 
-type RawWalletInfoInput = {
+export type RawWalletInfoInput = {
   tokenAddresses?: string[]
-  config: SdkConfig
 } & WalletInfoInput
 
 interface NativeAssetBalance {
@@ -29,28 +28,16 @@ interface WalletInfo {
   balances: (NativeAssetBalance | TokenBalance)[]
 }
 
-const getWalletInfo = async ({
-  address,
-  tokenAddresses = [],
-  config
-}: RawWalletInfoInput): Promise<WalletInfo> => {
+export const getWalletInfoBuilder = async (
+  { address, tokenAddresses = [] }: RawWalletInfoInput,
+  config: SdkConfig
+): Promise<WalletInfo> => {
   const qs = [
-    `protocol=${config.protocol}`,
+    `protocol=${config.protocol.protocol}`,
     ...tokenAddresses.map(address => `tokenAddresses[]=${address}`),
   ]
-  const res = await getCryptumApi(config).get(
+  const res = await getCryptumAxiosInstance(config.connection).get(
     `/wallet/${address}/info?${qs.join('&')}`
   )
   return res.data
 }
-
-const buildGetWalletInfo =
-  (config: SdkConfig) =>
-  (address: string) =>
-    getWalletInfo({
-      address,
-      tokenAddresses: config.tokenAddresses,
-      config  
-    })
-
-export default buildGetWalletInfo
