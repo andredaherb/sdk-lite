@@ -2,11 +2,12 @@
   "name": "cryptum-lite",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "ts-node index.ts",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "build": "esbuild index.ts --bundle --platform=node --external:./node_modules/* --outfile=index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "@types/jest": "^28.1.3",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "esbuild": "^0.15.5",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "jest": "^28.1.1",
