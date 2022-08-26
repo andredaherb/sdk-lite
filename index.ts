@@ -1,3 +1,4 @@
-import buildSdk from './lib/builder'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const buildSdk = require('./lib/builder')
 
-export default buildSdk
+module.exports = buildSdk
