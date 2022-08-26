@@ -30,7 +30,7 @@ __export(sdk_lite_exports, {
 module.exports = __toCommonJS(sdk_lite_exports);
 
 // lib/api/cryptum-api-instance.ts
-var import_axios = __toESM(require("./node_modules/axios/index.js"), 1);
+var import_axios = __toESM(require("./node_modules/axios/index.js"));
 
 // lib/api/config.ts
 var getBaseUrl = (environment) => {
@@ -171,14 +171,14 @@ var POLYGON_COMMON_CHAIN = {
 };
 
 // lib/utils/index.ts
-var import_bignumber = __toESM(require("./node_modules/bignumber.js/bignumber.mjs"), 1);
+var import_bignumber = __toESM(require("./node_modules/bignumber.js/bignumber.mjs"));
 var toWei = (eth, decimals = 18) => new import_bignumber.default(eth).times(`1e${decimals}`);
 
 // lib/evm-compatible/transfer.ts
-var import_common = __toESM(require("./node_modules/@ethereumjs/common/dist/index.js"), 1);
+var import_common = __toESM(require("./node_modules/@ethereumjs/common/dist/index.js"));
 var import_tx = require("./node_modules/@ethereumjs/tx/dist/index.js");
-var import_bignumber2 = __toESM(require("./node_modules/bignumber.js/bignumber.mjs"), 1);
-var import_ethereumjs_wallet2 = __toESM(require("./node_modules/ethereumjs-wallet/dist/index.js"), 1);
+var import_bignumber2 = __toESM(require("./node_modules/bignumber.js/bignumber.mjs"));
+var import_ethereumjs_wallet2 = __toESM(require("./node_modules/ethereumjs-wallet/dist/index.js"));
 
 // lib/api/fee-api.ts
 var getFee = async (txData, config) => {
